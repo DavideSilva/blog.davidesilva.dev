@@ -5,8 +5,8 @@ const branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
 
 export default defineConfig({
   branch,
-  clientId: process.env.TINA_CLIENT_ID, // Get this from tina.io
-  token: process.env.TINA_TOKEN, // Get this from tina.io
+  clientId: process.env.TINA_CLIENT_ID,
+  token: process.env.TINA_TOKEN,
 
   build: {
     outputFolder: "admin",
@@ -24,6 +24,7 @@ export default defineConfig({
         name: "post",
         label: "Posts",
         path: "/src/content/blog",
+        format: "md",
         fields: [
           {
             type: "string",
@@ -31,6 +32,18 @@ export default defineConfig({
             label: "Title",
             isTitle: true,
             required: true,
+          },
+          {
+            type: "string",
+            name: "description",
+            label: "Description",
+            required: true
+          },
+          {
+            type: "datetime",
+            name: "pubDatetime",
+            label: "Published at",
+            required: true
           },
           {
             type: "rich-text",
