@@ -18,6 +18,11 @@ export default defineConfig({
       publicFolder: "public",
     },
   },
+  search: {
+    tina: {
+      indexerToken: process.env.TINA_SEARCH_TOKEN
+    }
+  },
   schema: {
     collections: [
       {
@@ -53,6 +58,12 @@ export default defineConfig({
             ui: {
               component: 'tags'
             },
+            required: false
+          },
+          {
+            type: "string",
+            name: "canonicalURL",
+            label: "Canonical URL",
             required: false
           },
           {
